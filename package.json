@@ -43,7 +43,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "sitemap": "babel-node ./sitemap-builder.js"
+    "sitemap": "babel-node ./sitemap-builder.js",
+    "prettier": "prettier . --write"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"

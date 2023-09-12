@@ -1,12 +1,12 @@
-import { mode } from "@chakra-ui/theme-tools";
+import {mode} from "@chakra-ui/theme-tools"
 export const inputStyles = {
   components: {
     Input: {
       baseStyle: {
         field: {
           fontWeight: 400,
-          borderRadius: "8px",
-        },
+          borderRadius: "8px"
+        }
       },
 
       variants: {
@@ -19,8 +19,8 @@ export const inputStyles = {
             borderRadius: "16px",
             fontSize: "sm",
             p: "20px",
-            _placeholder: { color: "secondaryGray.400" },
-          },
+            _placeholder: {color: "secondaryGray.400"}
+          }
         }),
         auth: (props) => ({
           field: {
@@ -33,8 +33,8 @@ export const inputStyles = {
               "rgba(135, 140, 189, 0.3)"
             )(props),
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600", fontWeight: "400" },
-          },
+            _placeholder: {color: "secondaryGray.600", fontWeight: "400"}
+          }
         }),
         authSecondary: (props) => ({
           field: {
@@ -42,24 +42,24 @@ export const inputStyles = {
             border: "1px solid",
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         search: (props) => ({
           field: {
             border: "none",
             py: "11px",
             borderRadius: "inherit",
-            _placeholder: { color: "secondaryGray.600" },
-          },
-        }),
-      },
+            _placeholder: {color: "secondaryGray.600"}
+          }
+        })
+      }
     },
     NumberInput: {
       baseStyle: {
         field: {
-          fontWeight: 400,
-        },
+          fontWeight: 400
+        }
       },
 
       variants: {
@@ -70,8 +70,8 @@ export const inputStyles = {
 
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         auth: (props) => ({
           field: {
@@ -80,8 +80,8 @@ export const inputStyles = {
 
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         authSecondary: (props) => ({
           field: {
@@ -90,24 +90,24 @@ export const inputStyles = {
 
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         search: (props) => ({
           field: {
             border: "none",
             py: "11px",
             borderRadius: "inherit",
-            _placeholder: { color: "secondaryGray.600" },
-          },
-        }),
-      },
+            _placeholder: {color: "secondaryGray.600"}
+          }
+        })
+      }
     },
     Select: {
       baseStyle: {
         field: {
-          fontWeight: 400,
-        },
+          fontWeight: 400
+        }
       },
 
       variants: {
@@ -118,11 +118,11 @@ export const inputStyles = {
             color: "secondaryGray.600",
             borderColor: mode("secondaryGray.100", "whiteAlpha.100")(props),
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
+            _placeholder: {color: "secondaryGray.600"}
           },
           icon: {
-            color: "secondaryGray.600",
-          },
+            color: "secondaryGray.600"
+          }
         }),
         mini: (props) => ({
           field: {
@@ -130,15 +130,15 @@ export const inputStyles = {
             border: "0px solid transparent",
             fontSize: "0px",
             p: "10px",
-            _placeholder: { color: "secondaryGray.600" },
+            _placeholder: {color: "secondaryGray.600"}
           },
           icon: {
-            color: "secondaryGray.600",
-          },
+            color: "secondaryGray.600"
+          }
         }),
         subtle: (props) => ({
           box: {
-            width: "unset",
+            width: "unset"
           },
           field: {
             bg: "transparent",
@@ -146,11 +146,11 @@ export const inputStyles = {
             color: "secondaryGray.600",
             borderColor: "transparent",
             width: "max-content",
-            _placeholder: { color: "secondaryGray.600" },
+            _placeholder: {color: "secondaryGray.600"}
           },
           icon: {
-            color: "secondaryGray.600",
-          },
+            color: "secondaryGray.600"
+          }
         }),
         transparent: (props) => ({
           field: {
@@ -164,15 +164,15 @@ export const inputStyles = {
             paddingRight: "20px",
             fontWeight: "700",
             fontSize: "14px",
-            _placeholder: { color: "secondaryGray.600" },
+            _placeholder: {color: "secondaryGray.600"}
           },
           icon: {
             transform: "none !important",
             position: "unset !important",
             width: "unset",
             color: "secondaryGray.600",
-            right: "0px",
-          },
+            right: "0px"
+          }
         }),
         auth: (props) => ({
           field: {
@@ -181,8 +181,8 @@ export const inputStyles = {
 
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         authSecondary: (props) => ({
           field: {
@@ -191,19 +191,19 @@ export const inputStyles = {
 
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         search: (props) => ({
           field: {
             border: "none",
             py: "11px",
             borderRadius: "inherit",
-            _placeholder: { color: "secondaryGray.600" },
-          },
-        }),
-      },
-    },
+            _placeholder: {color: "secondaryGray.600"}
+          }
+        })
+      }
+    }
     // PinInputField: {
     //   variants: {
     //     main: (props) => ({
@@ -218,5 +218,5 @@ export const inputStyles = {
     //     }),
     //   },
     // },
-  },
-};
+  }
+}

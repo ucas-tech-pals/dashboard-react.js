@@ -3,28 +3,28 @@
 export const barChartDataDailyTraffic = [
   {
     name: "Daily Traffic",
-    data: [20, 30, 40, 20, 45, 50, 30],
-  },
-];
+    data: [20, 30, 40, 20, 45, 50, 30]
+  }
+]
 
 export const barChartOptionsDailyTraffic = {
   chart: {
     toolbar: {
-      show: false,
-    },
+      show: false
+    }
   },
   tooltip: {
     style: {
       fontSize: "12px",
-      fontFamily: undefined,
+      fontFamily: undefined
     },
     onDatasetHover: {
       style: {
         fontSize: "12px",
-        fontFamily: undefined,
-      },
+        fontFamily: undefined
+      }
     },
-    theme: "dark",
+    theme: "dark"
   },
   xaxis: {
     categories: ["00", "04", "08", "12", "14", "16", "18"],
@@ -34,15 +34,15 @@ export const barChartOptionsDailyTraffic = {
       style: {
         colors: "#A3AED0",
         fontSize: "14px",
-        fontWeight: "500",
-      },
+        fontWeight: "500"
+      }
     },
     axisBorder: {
-      show: false,
+      show: false
     },
     axisTicks: {
-      show: false,
-    },
+      show: false
+    }
   },
   yaxis: {
     show: false,
@@ -51,23 +51,23 @@ export const barChartOptionsDailyTraffic = {
       show: true,
       style: {
         colors: "#CBD5E0",
-        fontSize: "14px",
-      },
-    },
+        fontSize: "14px"
+      }
+    }
   },
   grid: {
     show: false,
     strokeDashArray: 5,
     yaxis: {
       lines: {
-        show: true,
-      },
+        show: true
+      }
     },
     xaxis: {
       lines: {
-        show: false,
-      },
-    },
+        show: false
+      }
+    }
   },
   fill: {
     type: "gradient",
@@ -81,64 +81,64 @@ export const barChartOptionsDailyTraffic = {
           {
             offset: 0,
             color: "#4318FF",
-            opacity: 1,
+            opacity: 1
           },
           {
             offset: 100,
             color: "rgba(67, 24, 255, 1)",
-            opacity: 0.28,
-          },
-        ],
-      ],
-    },
+            opacity: 0.28
+          }
+        ]
+      ]
+    }
   },
   dataLabels: {
-    enabled: false,
+    enabled: false
   },
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: "40px",
-    },
-  },
-};
+      columnWidth: "40px"
+    }
+  }
+}
 
 // Consumption Users Reports
 
 export const barChartDataConsumption = [
   {
     name: "PRODUCT A",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    data: [400, 370, 330, 390, 320, 350, 360, 320, 380]
   },
   {
     name: "PRODUCT B",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
+    data: [400, 370, 330, 390, 320, 350, 360, 320, 380]
   },
   {
     name: "PRODUCT C",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
-  },
-];
+    data: [400, 370, 330, 390, 320, 350, 360, 320, 380]
+  }
+]
 
 export const barChartOptionsConsumption = {
   chart: {
     stacked: true,
     toolbar: {
-      show: false,
-    },
+      show: false
+    }
   },
   tooltip: {
     style: {
       fontSize: "12px",
-      fontFamily: undefined,
+      fontFamily: undefined
     },
     onDatasetHover: {
       style: {
         fontSize: "12px",
-        fontFamily: undefined,
-      },
+        fontFamily: undefined
+      }
     },
-    theme: "dark",
+    theme: "dark"
   },
   xaxis: {
     categories: ["17", "18", "19", "20", "21", "22", "23", "24", "25"],
@@ -148,15 +148,15 @@ export const barChartOptionsConsumption = {
       style: {
         colors: "#A3AED0",
         fontSize: "14px",
-        fontWeight: "500",
-      },
+        fontWeight: "500"
+      }
     },
     axisBorder: {
-      show: false,
+      show: false
     },
     axisTicks: {
-      show: false,
-    },
+      show: false
+    }
   },
   yaxis: {
     show: false,
@@ -166,9 +166,9 @@ export const barChartOptionsConsumption = {
       style: {
         colors: "#A3AED0",
         fontSize: "14px",
-        fontWeight: "500",
-      },
-    },
+        fontWeight: "500"
+      }
+    }
   },
 
   grid: {
@@ -177,95 +177,95 @@ export const barChartOptionsConsumption = {
     yaxis: {
       lines: {
         show: false,
-        opacity: 0.5,
-      },
+        opacity: 0.5
+      }
     },
     row: {
-      opacity: 0.5,
+      opacity: 0.5
     },
     xaxis: {
       lines: {
-        show: false,
-      },
-    },
+        show: false
+      }
+    }
   },
   fill: {
     type: "solid",
-    colors: ["#5E37FF", "#6AD2FF", "#E1E9F8"],
+    colors: ["#5E37FF", "#6AD2FF", "#E1E9F8"]
   },
   legend: {
-    show: false,
+    show: false
   },
   colors: ["#5E37FF", "#6AD2FF", "#E1E9F8"],
   dataLabels: {
-    enabled: false,
+    enabled: false
   },
   plotOptions: {
     bar: {
       borderRadius: 10,
-      columnWidth: "20px",
-    },
-  },
-};
+      columnWidth: "20px"
+    }
+  }
+}
 
 export const pieChartOptions = {
   labels: ["Your files", "System", "Empty"],
   colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
   chart: {
-    width: "50px",
+    width: "50px"
   },
   states: {
     hover: {
       filter: {
-        type: "none",
-      },
-    },
+        type: "none"
+      }
+    }
   },
   legend: {
-    show: false,
+    show: false
   },
   dataLabels: {
-    enabled: false,
+    enabled: false
   },
-  hover: { mode: null },
+  hover: {mode: null},
   plotOptions: {
     donut: {
       expandOnClick: false,
       donut: {
         labels: {
-          show: false,
-        },
-      },
-    },
+          show: false
+        }
+      }
+    }
   },
   fill: {
-    colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+    colors: ["#4318FF", "#6AD2FF", "#EFF4FB"]
   },
   tooltip: {
     enabled: true,
-    theme: "dark",
-  },
-};
+    theme: "dark"
+  }
+}
 
-export const pieChartData = [63, 25, 12];
+export const pieChartData = [63, 25, 12]
 
 // Total Spent Default
 
 export const lineChartDataTotalSpent = [
   {
     name: "Revenue",
-    data: [50, 64, 48, 66, 49, 68],
+    data: [50, 64, 48, 66, 49, 68]
   },
   {
     name: "Profit",
-    data: [30, 40, 24, 46, 20, 46],
-  },
-];
+    data: [30, 40, 24, 46, 20, 46]
+  }
+]
 
 export const lineChartOptionsTotalSpent = {
   chart: {
     toolbar: {
-      show: false,
+      show: false
     },
     dropShadow: {
       enabled: true,
@@ -273,8 +273,8 @@ export const lineChartOptionsTotalSpent = {
       left: 0,
       blur: 10,
       opacity: 0.1,
-      color: "#4318FF",
-    },
+      color: "#4318FF"
+    }
   },
   colors: ["#4318FF", "#39B8FF"],
   markers: {
@@ -290,17 +290,17 @@ export const lineChartOptionsTotalSpent = {
     radius: 2,
     offsetX: 0,
     offsetY: 0,
-    showNullDataPoints: true,
+    showNullDataPoints: true
   },
   tooltip: {
-    theme: "dark",
+    theme: "dark"
   },
   dataLabels: {
-    enabled: false,
+    enabled: false
   },
   stroke: {
     curve: "smooth",
-    type: "line",
+    type: "line"
   },
   xaxis: {
     type: "numeric",
@@ -309,28 +309,28 @@ export const lineChartOptionsTotalSpent = {
       style: {
         colors: "#A3AED0",
         fontSize: "12px",
-        fontWeight: "500",
-      },
+        fontWeight: "500"
+      }
     },
     axisBorder: {
-      show: false,
+      show: false
     },
     axisTicks: {
-      show: false,
-    },
+      show: false
+    }
   },
   yaxis: {
-    show: false,
+    show: false
   },
   legend: {
-    show: false,
+    show: false
   },
   grid: {
     show: false,
     column: {
       color: ["#7551FF", "#39B8FF"],
-      opacity: 0.5,
-    },
+      opacity: 0.5
+    }
   },
-  color: ["#7551FF", "#39B8FF"],
-};
+  color: ["#7551FF", "#39B8FF"]
+}

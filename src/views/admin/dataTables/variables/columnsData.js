@@ -1,75 +1,75 @@
 export const columnsDataDevelopment = [
   {
     Header: "NAME",
-    accessor: "name",
+    accessor: "name"
   },
   {
     Header: "TECH",
-    accessor: "tech",
+    accessor: "tech"
   },
   {
     Header: "DATE",
-    accessor: "date",
+    accessor: "date"
   },
   {
     Header: "PROGRESS",
-    accessor: "progress",
-  },
-];
+    accessor: "progress"
+  }
+]
 
 export const columnsDataCheck = [
   {
     Header: "NAME",
-    accessor: "name",
+    accessor: "name"
   },
   {
     Header: "PROGRESS",
-    accessor: "progress",
+    accessor: "progress"
   },
   {
     Header: "QUANTITY",
-    accessor: "quantity",
+    accessor: "quantity"
   },
   {
     Header: "DATE",
-    accessor: "date",
-  },
-];
+    accessor: "date"
+  }
+]
 
 export const columnsDataColumns = [
   {
     Header: "NAME",
-    accessor: "name",
+    accessor: "name"
   },
   {
     Header: "PROGRESS",
-    accessor: "progress",
+    accessor: "progress"
   },
   {
     Header: "QUANTITY",
-    accessor: "quantity",
+    accessor: "quantity"
   },
   {
     Header: "DATE",
-    accessor: "date",
-  },
-];
+    accessor: "date"
+  }
+]
 
 export const columnsDataComplex = [
   {
     Header: "NAME",
-    accessor: "name",
+    accessor: "name"
   },
   {
     Header: "STATUS",
-    accessor: "status",
+    accessor: "status"
   },
   {
     Header: "DATE",
-    accessor: "date",
+    accessor: "date"
   },
   {
     Header: "PROGRESS",
-    accessor: "progress",
-  },
-];
+    accessor: "progress"
+  }
+]

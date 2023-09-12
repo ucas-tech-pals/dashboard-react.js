@@ -1,12 +1,12 @@
-import { mode } from "@chakra-ui/theme-tools";
+import {mode} from "@chakra-ui/theme-tools"
 export const textareaStyles = {
   components: {
     Textarea: {
       baseStyle: {
         field: {
           fontWeight: 400,
-          borderRadius: "8px",
-        },
+          borderRadius: "8px"
+        }
       },
 
       variants: {
@@ -19,8 +19,8 @@ export const textareaStyles = {
             borderRadius: "16px",
             fontSize: "sm",
             p: "20px",
-            _placeholder: { color: "secondaryGray.400" },
-          },
+            _placeholder: {color: "secondaryGray.400"}
+          }
         }),
         auth: (props) => ({
           field: {
@@ -28,8 +28,8 @@ export const textareaStyles = {
             border: "1px solid",
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         authSecondary: (props) => ({
           field: {
@@ -38,18 +38,18 @@ export const textareaStyles = {
 
             borderColor: "secondaryGray.100",
             borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+            _placeholder: {color: "secondaryGray.600"}
+          }
         }),
         search: (props) => ({
           field: {
             border: "none",
             py: "11px",
             borderRadius: "inherit",
-            _placeholder: { color: "secondaryGray.600" },
-          },
-        }),
-      },
-    },
-  },
-};
+            _placeholder: {color: "secondaryGray.600"}
+          }
+        })
+      }
+    }
+  }
+}

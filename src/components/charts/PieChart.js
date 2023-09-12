@@ -1,21 +1,21 @@
-import React from "react";
-import ReactApexChart from "react-apexcharts";
+import React from "react"
+import ReactApexChart from "react-apexcharts"
 
 class PieChart extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       chartData: [],
-      chartOptions: {},
-    };
+      chartOptions: {}
+    }
   }
 
   componentDidMount() {
     this.setState({
       chartData: this.props.chartData,
-      chartOptions: this.props.chartOptions,
-    });
+      chartOptions: this.props.chartOptions
+    })
   }
 
   render() {
@@ -23,12 +23,12 @@ class PieChart extends React.Component {
       <ReactApexChart
         options={this.state.chartOptions}
         series={this.state.chartData}
-        type='pie'
-        width='100%'
-        height='55%'
+        type="pie"
+        width="100%"
+        height="55%"
       />
-    );
+    )
   }
 }
 
-export default PieChart;
+export default PieChart

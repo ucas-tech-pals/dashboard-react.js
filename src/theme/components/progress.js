@@ -1,4 +1,4 @@
-import { mode } from "@chakra-ui/theme-tools";
+import {mode} from "@chakra-ui/theme-tools"
 export const progressStyles = {
   components: {
     Progress: {
@@ -8,16 +8,16 @@ export const progressStyles = {
           w: "16px",
           h: "16px",
           borderRadius: "20px",
-          _checked: { transform: "translate(20px, 0px)" },
+          _checked: {transform: "translate(20px, 0px)"}
         },
         track: {
           w: "40px",
           h: "20px",
           borderRadius: "20px",
           _focus: {
-            boxShadow: "none",
-          },
-        },
+            boxShadow: "none"
+          }
+        }
       },
 
       variants: {
@@ -25,19 +25,19 @@ export const progressStyles = {
           field: {
             bg: "brand.500",
             borderRadius: "16px",
-            fontSize: "sm",
+            fontSize: "sm"
           },
           track: {
             borderRadius: "20px",
             bg: mode("blue.50", "whiteAlpha.50")(props),
             h: "8px",
-            w: "54px",
+            w: "54px"
           },
           thumb: {
-            w: "250px",
-          },
-        }),
-      },
-    },
-  },
-};
+            w: "250px"
+          }
+        })
+      }
+    }
+  }
+}

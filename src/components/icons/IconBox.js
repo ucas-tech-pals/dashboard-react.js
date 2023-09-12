@@ -1,8 +1,8 @@
-import React from "react";
-import { Flex } from "@chakra-ui/react";
+import React from "react"
+import {Flex} from "@chakra-ui/react"
 
 export default function IconBox(props) {
-  const { icon, ...rest } = props;
+  const {icon, ...rest} = props
 
   return (
     <Flex
@@ -12,5 +12,5 @@ export default function IconBox(props) {
       {...rest}>
       {icon}
     </Flex>
-  );
+  )
 }

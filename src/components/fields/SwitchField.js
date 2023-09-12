@@ -6,9 +6,9 @@ import {
   Switch,
   Text,
   useColorModeValue
-} from "@chakra-ui/react";
+} from "@chakra-ui/react"
 // Custom components
-import React from "react";
+import React from "react"
 
 export default function Default(props) {
   const {
@@ -21,9 +21,9 @@ export default function Default(props) {
     reversed,
     fontSize,
     ...rest
-  } = props;
-  let [checked, setChecked] = React.useState(isChecked);
-  const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
+  } = props
+  let [checked, setChecked] = React.useState(isChecked)
+  const textColorPrimary = useColorModeValue("secondaryGray.900", "white")
   return (
     <Box w="100%" fontWeight="500" {...rest}>
       {reversed ? (
@@ -48,18 +48,16 @@ export default function Default(props) {
           <FormLabel
             ms="15px"
             htmlFor={id}
-            _hover={{ cursor: "pointer" }}
+            _hover={{cursor: "pointer"}}
             direction="column"
             mb="0px"
-            maxW={textWidth ? textWidth : "75%"}
-          >
+            maxW={textWidth ? textWidth : "75%"}>
             <Text color={textColorPrimary} fontSize="md" fontWeight="500">
               {label}
             </Text>
             <Text
               color="secondaryGray.600"
-              fontSize={fontSize ? fontSize : "md"}
-            >
+              fontSize={fontSize ? fontSize : "md"}>
               {desc}
             </Text>
           </FormLabel>
@@ -68,17 +66,15 @@ export default function Default(props) {
         <Flex justify="space-between" align="center" borderRadius="16px">
           <FormLabel
             htmlFor={id}
-            _hover={{ cursor: "pointer" }}
+            _hover={{cursor: "pointer"}}
             direction="column"
-            maxW={textWidth ? textWidth : "75%"}
-          >
+            maxW={textWidth ? textWidth : "75%"}>
             <Text color={textColorPrimary} fontSize="md" fontWeight="500">
               {label}
             </Text>
             <Text
               color="secondaryGray.600"
-              fontSize={fontSize ? fontSize : "md"}
-            >
+              fontSize={fontSize ? fontSize : "md"}>
               {desc}
             </Text>
           </FormLabel>
@@ -102,5 +98,5 @@ export default function Default(props) {
         </Flex>
       )}
     </Box>
-  );
+  )
 }
