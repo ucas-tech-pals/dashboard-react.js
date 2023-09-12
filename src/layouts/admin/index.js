@@ -1,16 +1,19 @@
+// DONE REVIEWING: GITHUB COMMIT
 // Chakra imports
-import {Portal, Box, useDisclosure, Text, Button, Link} from "@chakra-ui/react"
+import {Box, Portal, useDisclosure} from "@chakra-ui/react"
 import Footer from "components/footer/FooterAdmin.js"
 // Layout components
 import Navbar from "components/navbar/NavbarAdmin.js"
 import Sidebar from "components/sidebar/Sidebar.js"
 import {SidebarContext} from "contexts/SidebarContext"
-import React, {useState} from "react"
+import {useContext, useMemo, useState} from "react"
 import {Redirect, Route, Switch} from "react-router-dom"
 import routes from "routes.js"
+import Auth from "stores/auth"
 
 // Custom Chakra theme
 export default function Dashboard(props) {
+  const auth = useContext(Auth)
   const {...rest} = props
   // states and functions
   const [fixed] = useState(false)
@@ -19,107 +22,112 @@ export default function Dashboard(props) {
   const getRoute = () => {
     return window.location.pathname !== "/admin/full-screen-maps"
   }
-  const getActiveRoute = (routes) => {
-    let activeRoute = "Default Brand Text"
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].collapse) {
-        let collapseActiveRoute = getActiveRoute(routes[i].items)
+  const getActiveRoute = (routesPassed) => {
+    const activeRoute = "Default Brand Text"
+    for (let index = 0; index < routesPassed.length; index += 1) {
+      if (routesPassed[index].collapse) {
+        const collapseActiveRoute = getActiveRoute(routesPassed[index].items)
         if (collapseActiveRoute !== activeRoute) {
           return collapseActiveRoute
         }
-      } else if (routes[i].category) {
-        let categoryActiveRoute = getActiveRoute(routes[i].items)
+      } else if (routesPassed[index].category) {
+        const categoryActiveRoute = getActiveRoute(routesPassed[index].items)
         if (categoryActiveRoute !== activeRoute) {
           return categoryActiveRoute
         }
-      } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
-          return routes[i].name
-        }
+      } else if (
+        window.location.href.indexOf(
+          routesPassed[index].layout + routesPassed[index].path
+        ) !== -1
+      ) {
+        return routesPassed[index].name
       }
     }
     return activeRoute
   }
-  const getActiveNavbar = (routes) => {
-    let activeNavbar = false
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].collapse) {
-        let collapseActiveNavbar = getActiveNavbar(routes[i].items)
+  const getActiveNavbar = (routesPassed) => {
+    const activeNavbar = false
+    for (let index = 0; index < routesPassed.length; index += 1) {
+      if (routesPassed[index].collapse) {
+        const collapseActiveNavbar = getActiveNavbar(routesPassed[index].items)
         if (collapseActiveNavbar !== activeNavbar) {
           return collapseActiveNavbar
         }
-      } else if (routes[i].category) {
-        let categoryActiveNavbar = getActiveNavbar(routes[i].items)
+      } else if (routesPassed[index].category) {
+        const categoryActiveNavbar = getActiveNavbar(routesPassed[index].items)
         if (categoryActiveNavbar !== activeNavbar) {
           return categoryActiveNavbar
         }
-      } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
-          return routes[i].secondary
-        }
+      } else if (
+        window.location.href.indexOf(
+          routesPassed[index].layout + routesPassed[index].path
+        ) !== -1
+      ) {
+        return routesPassed[index].secondary
       }
     }
     return activeNavbar
   }
-  const getActiveNavbarText = (routes) => {
-    let activeNavbar = false
-    for (let i = 0; i < routes.length; i++) {
-      if (routes[i].collapse) {
-        let collapseActiveNavbar = getActiveNavbarText(routes[i].items)
-        if (collapseActiveNavbar !== activeNavbar) {
-          return collapseActiveNavbar
-        }
-      } else if (routes[i].category) {
-        let categoryActiveNavbar = getActiveNavbarText(routes[i].items)
-        if (categoryActiveNavbar !== activeNavbar) {
-          return categoryActiveNavbar
-        }
-      } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
-          return routes[i].messageNavbar
-        }
-      }
-    }
-    return activeNavbar
-  }
-  const getRoutes = (routes) => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
+  const getActiveNavbarText = (routesPassed) => {
+    const activeNavbar = false
+    for (let index = 0; index < routesPassed.length; index += 1) {
+      if (routesPassed[index].collapse) {
+        const collapseActiveNavbar = getActiveNavbarText(
+          routesPassed[index].items
         )
+        if (collapseActiveNavbar !== activeNavbar) {
+          return collapseActiveNavbar
+        }
+      } else if (routesPassed[index].category) {
+        const categoryActiveNavbar = getActiveNavbarText(
+          routesPassed[index].items
+        )
+        if (categoryActiveNavbar !== activeNavbar) {
+          return categoryActiveNavbar
+        }
+      } else if (
+        window.location.href.indexOf(
+          routesPassed[index].layout + routesPassed[index].path
+        ) !== -1
+      ) {
+        return routesPassed[index].messageNavbar
+      }
+    }
+    return activeNavbar
+  }
+  const getRoutes = (routesPassed) => {
+    return routesPassed.map((prop) => {
+      if (prop.layout === "/admin") {
+        if (auth.token)
+          return (
+            <Route
+              path={prop.layout + prop.path}
+              component={prop.component}
+              key={prop.layout + prop.path}
+            />
+          )
+        return <Redirect from={prop.layout + prop.path} to="/auth/sign-in" />
       }
       if (prop.collapse) {
         return getRoutes(prop.items)
       }
       if (prop.category) {
         return getRoutes(prop.items)
-      } else {
-        return null
       }
+      return null
     })
   }
   document.documentElement.dir = "ltr"
   const {onOpen} = useDisclosure()
   document.documentElement.dir = "ltr"
+  const value = useMemo(
+    () => ({toggleSidebar, setToggleSidebar}),
+    [toggleSidebar, setToggleSidebar]
+  )
   return (
     <Box>
       <Box>
-        <SidebarContext.Provider
-          value={{
-            toggleSidebar,
-            setToggleSidebar
-          }}>
+        <SidebarContext.Provider value={value}>
           <Sidebar routes={routes} display="none" {...rest} />
           <Box
             float="right"
@@ -138,7 +146,7 @@ export default function Dashboard(props) {
               <Box>
                 <Navbar
                   onOpen={onOpen}
-                  logoText={"Horizon UI Dashboard PRO"}
+                  logoText="Horizon UI Dashboard PRO"
                   brandText={getActiveRoute(routes)}
                   secondary={getActiveNavbar(routes)}
                   message={getActiveNavbarText(routes)}
@@ -155,10 +163,12 @@ export default function Dashboard(props) {
                 pe="20px"
                 minH="100vh"
                 pt="50px">
-                <Switch>
-                  {getRoutes(routes)}
-                  <Redirect from="/" to="/admin/default" />
-                </Switch>
+                {auth.ready ? (
+                  <Switch>
+                    {getRoutes(routes)}
+                    <Redirect from="/" to="/admin/default" />
+                  </Switch>
+                ) : null}
               </Box>
             ) : null}
             <Box>

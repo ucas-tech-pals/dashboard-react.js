@@ -1,6 +1,8 @@
-import React, {useState} from "react"
+// DONE REVIEWING: GITHUB COMMIT
+import {useContext, useMemo, useState} from "react"
 import {Redirect, Route, Switch} from "react-router-dom"
 import routes from "routes.js"
+import AuthContext from "stores/auth"
 
 // Chakra imports
 import {Box, useColorModeValue} from "@chakra-ui/react"
@@ -10,42 +12,47 @@ import {SidebarContext} from "contexts/SidebarContext"
 
 // Custom Chakra theme
 export default function Auth() {
+  const auth = useContext(AuthContext)
   // states and functions
   const [toggleSidebar, setToggleSidebar] = useState(false)
   // functions for changing the states from components
   const getRoute = () => {
     return window.location.pathname !== "/auth/full-screen-maps"
   }
-  const getRoutes = (routes) => {
-    return routes.map((prop, key) => {
+  const getRoutes = (routesPassed) => {
+    return routesPassed.map((prop) => {
       if (prop.layout === "/auth") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        )
+        if (!auth.token)
+          return (
+            <Route
+              path={prop.layout + prop.path}
+              component={prop.component}
+              key={prop.layout + prop.path}
+            />
+          )
+        return <Redirect from={prop.layout + prop.path} to="/admin/default" />
       }
       if (prop.collapse) {
         return getRoutes(prop.items)
       }
       if (prop.category) {
         return getRoutes(prop.items)
-      } else {
-        return null
       }
+      return null
     })
   }
   const authBg = useColorModeValue("white", "navy.900")
   document.documentElement.dir = "ltr"
+  const value = useMemo(
+    () => ({
+      toggleSidebar,
+      setToggleSidebar
+    }),
+    [toggleSidebar, setToggleSidebar]
+  )
   return (
     <Box>
-      <SidebarContext.Provider
-        value={{
-          toggleSidebar,
-          setToggleSidebar
-        }}>
+      <SidebarContext.Provider value={value}>
         <Box
           bg={authBg}
           float="right"
