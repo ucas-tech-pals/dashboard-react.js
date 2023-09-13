@@ -1,4 +1,4 @@
-/* eslint-disable */
+// DONE REVIEWING: GITHUB COMMIT 🔒
 /*!
   _   _  ___  ____  ___ ________  _   _   _   _ ___   
  | | | |/ _ \|  _ \|_ _|__  / _ \| \ | | | | | |_ _| 
@@ -21,13 +21,12 @@
 
 */
 
-import React from "react"
+import React, {useContext} from "react"
 import {NavLink} from "react-router-dom"
 // Chakra imports
 import {
   Box,
   Button,
-  Checkbox,
   Flex,
   FormControl,
   FormLabel,
@@ -36,37 +35,37 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Radio,
+  RadioGroup,
+  Stack,
   Text,
   useColorModeValue
 } from "@chakra-ui/react"
 // Custom components
-import {HSeparator} from "components/separator/Separator"
 import DefaultAuth from "layouts/auth/Default"
 // Assets
+// eslint-disable-next-line
 import illustration from "assets/img/auth/auth.png"
-import {FcGoogle} from "react-icons/fc"
+import client from "plugins/client"
 import {MdOutlineRemoveRedEye} from "react-icons/md"
 import {RiEyeCloseLine} from "react-icons/ri"
+import Auth from "stores/auth"
 
-function SignIn() {
+const SignIn = function SignIn() {
   // Chakra color mode
   const textColor = useColorModeValue("navy.700", "white")
   const textColorSecondary = "gray.400"
   const textColorDetails = useColorModeValue("navy.700", "secondaryGray.600")
   const textColorBrand = useColorModeValue("brand.500", "white")
   const brandStars = useColorModeValue("brand.500", "brand.400")
-  const googleBg = useColorModeValue("secondaryGray.300", "whiteAlpha.200")
-  const googleText = useColorModeValue("navy.700", "white")
-  const googleHover = useColorModeValue(
-    {bg: "gray.200"},
-    {bg: "whiteAlpha.300"}
-  )
-  const googleActive = useColorModeValue(
-    {bg: "secondaryGray.300"},
-    {bg: "whiteAlpha.200"}
-  )
+  const {signIn} = useContext(Auth)
+  const [accountType, setAccountType] = React.useState("user")
+  const [email, setEmail] = React.useState(null)
+  const [password, setPassword] = React.useState(null)
+  const [isLoading, setIsLoading] = React.useState(false)
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
+  const handleInputChange = (value, setterFunction) => setterFunction(value)
   return (
     <DefaultAuth illustrationBackground={illustration} image={illustration}>
       <Flex
@@ -104,29 +103,6 @@ function SignIn() {
           mx={{base: "auto", lg: "unset"}}
           me="auto"
           mb={{base: "20px", md: "auto"}}>
-          <Button
-            fontSize="sm"
-            me="0px"
-            mb="26px"
-            py="15px"
-            h="50px"
-            borderRadius="16px"
-            bg={googleBg}
-            color={googleText}
-            fontWeight="500"
-            _hover={googleHover}
-            _active={googleActive}
-            _focus={googleActive}>
-            <Icon as={FcGoogle} w="20px" h="20px" me="10px" />
-            Sign in with Google
-          </Button>
-          <Flex align="center" mb="25px">
-            <HSeparator />
-            <Text color="gray.400" mx="14px">
-              or
-            </Text>
-            <HSeparator />
-          </Flex>
           <FormControl>
             <FormLabel
               display="flex"
@@ -138,7 +114,7 @@ function SignIn() {
               Email<Text color={brandStars}>*</Text>
             </FormLabel>
             <Input
-              isRequired={true}
+              isRequired
               variant="auth"
               fontSize="sm"
               ms={{base: "0px", md: "0px"}}
@@ -147,6 +123,9 @@ function SignIn() {
               mb="24px"
               fontWeight="500"
               size="lg"
+              onChange={({currentTarget: {value}}) =>
+                handleInputChange(value, setEmail)
+              }
             />
             <FormLabel
               ms="4px"
@@ -158,13 +137,16 @@ function SignIn() {
             </FormLabel>
             <InputGroup size="md">
               <Input
-                isRequired={true}
+                isRequired
                 fontSize="sm"
                 placeholder="Min. 8 characters"
                 mb="24px"
                 size="lg"
                 type={show ? "text" : "password"}
                 variant="auth"
+                onChange={({currentTarget: {value}}) =>
+                  handleInputChange(value, setPassword)
+                }
               />
               <InputRightElement display="flex" alignItems="center" mt="4px">
                 <Icon
@@ -175,39 +157,38 @@ function SignIn() {
                 />
               </InputRightElement>
             </InputGroup>
-            <Flex justifyContent="space-between" align="center" mb="24px">
-              <FormControl display="flex" alignItems="center">
-                <Checkbox
-                  id="remember-login"
-                  colorScheme="brandScheme"
-                  me="10px"
-                />
-                <FormLabel
-                  htmlFor="remember-login"
-                  mb="0"
-                  fontWeight="normal"
-                  color={textColor}
-                  fontSize="sm">
-                  Keep me logged in
-                </FormLabel>
-              </FormControl>
-              <NavLink to="/auth/forgot-password">
-                <Text
-                  color={textColorBrand}
-                  fontSize="sm"
-                  w="124px"
-                  fontWeight="500">
-                  Forgot password?
-                </Text>
-              </NavLink>
-            </Flex>
+            <RadioGroup
+              colorScheme="brand"
+              mb="24px"
+              value={accountType}
+              onChange={setAccountType}>
+              <Stack direction="row" gap="12px">
+                <Radio value="user">User</Radio>
+                <Radio value="university">University</Radio>
+              </Stack>
+            </RadioGroup>
             <Button
+              isDisabled={!email || !password}
+              isLoading={isLoading}
               fontSize="sm"
               variant="brand"
               fontWeight="500"
               w="100%"
               h="50"
-              mb="24px">
+              mb="24px"
+              onClick={() => {
+                if (!email || !password) return
+                setIsLoading(true)
+                client(`${accountType}/login`, {
+                  method: "POST",
+                  body: JSON.stringify({email, password})
+                })
+                  .then((response) => signIn(response))
+                  .catch(() => {
+                    // Do something here about error
+                  })
+                  .finally(() => setIsLoading(false))
+              }}>
               Sign In
             </Button>
           </FormControl>
@@ -218,14 +199,14 @@ function SignIn() {
             maxW="100%"
             mt="0px">
             <Text color={textColorDetails} fontWeight="400" fontSize="14px">
-              Not registered yet?
+              Do not you have an account?
               <NavLink to="/auth/sign-up">
                 <Text
                   color={textColorBrand}
                   as="span"
                   ms="5px"
                   fontWeight="500">
-                  Create an Account
+                  Create an account
                 </Text>
               </NavLink>
             </Text>

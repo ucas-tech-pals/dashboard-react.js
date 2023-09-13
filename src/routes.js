@@ -1,23 +1,23 @@
-import React from "react"
-
+// DONE REVIEWING: GITHUB COMMIT 🔒
 import {Icon} from "@chakra-ui/react"
 import {
   MdBarChart,
-  MdPerson,
   MdHome,
   MdLock,
-  MdOutlineShoppingCart
+  MdOutlineShoppingCart,
+  MdPerson
 } from "react-icons/md"
 
 // Admin Imports
+import DataTables from "views/admin/dataTables"
 import MainDashboard from "views/admin/default"
 import NFTMarketplace from "views/admin/marketplace"
 import Profile from "views/admin/profile"
-import DataTables from "views/admin/dataTables"
 import RTL from "views/admin/rtl"
 
 // Auth Imports
 import SignInCentered from "views/auth/signIn"
+import SignUpCentered from "views/auth/signUp"
 
 const routes = [
   {
@@ -62,6 +62,13 @@ const routes = [
     path: "/sign-in",
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: SignInCentered
+  },
+  {
+    name: "Sign Up",
+    layout: "/auth",
+    path: "/sign-up",
+    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+    component: SignUpCentered
   },
   {
     name: "RTL Admin",
