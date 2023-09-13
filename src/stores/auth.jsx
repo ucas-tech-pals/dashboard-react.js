@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 🔒
+// DONE REVIEWING: GITHUB COMMIT 🔓
 import {localStorageTokenKey, localStorageUserKey} from "plugins/client"
 import React, {
   createContext,
@@ -25,11 +25,8 @@ export const Provider = function Provider({children}) {
   }, [])
 
   useEffect(() => {
-    const tokenStored = localStorage.getItem(localStorageTokenKey)
-    if (!tokenStored) setToken(null)
-    else setToken(tokenStored)
     setReady(true)
-  }, [token])
+  }, [])
 
   const value = useMemo(
     () => ({ready, token, user, signIn}),

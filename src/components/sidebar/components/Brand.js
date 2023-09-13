@@ -1,19 +1,16 @@
-import React from "react"
-
+// DONE REVIEWING: GITHUB COMMIT 🔓
 // Chakra imports
-import {Flex, useColorModeValue} from "@chakra-ui/react"
+import {Flex, Text} from "@chakra-ui/react"
 
 // Custom components
-import {HorizonLogo} from "components/icons/Icons"
 import {HSeparator} from "components/separator/Separator"
 
-export function SidebarBrand() {
-  //   Chakra color mode
-  let logoColor = useColorModeValue("navy.700", "white")
-
+export const SidebarBrand = function SidebarBrand() {
   return (
     <Flex align="center" direction="column">
-      <HorizonLogo h="26px" w="175px" my="32px" color={logoColor} />
+      <Text fontSize="34px" fontWeight="bold" mb="24px">
+        uCertified
+      </Text>
       <HSeparator mb="20px" />
     </Flex>
   )

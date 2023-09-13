@@ -1,20 +1,19 @@
-/* eslint-disable */
-import React from "react"
+// DONE REVIEWING: GITHUB COMMIT 🔓
 import {NavLink, useLocation} from "react-router-dom"
 // chakra imports
 import {Box, Flex, HStack, Text, useColorModeValue} from "@chakra-ui/react"
 
-export function SidebarLinks(props) {
+export const SidebarLinks = function SidebarLinks(props) {
   //   Chakra color mode
-  let location = useLocation()
-  let activeColor = useColorModeValue("gray.700", "white")
-  let inactiveColor = useColorModeValue(
+  const location = useLocation()
+  const activeColor = useColorModeValue("gray.700", "white")
+  const inactiveColor = useColorModeValue(
     "secondaryGray.600",
     "secondaryGray.600"
   )
-  let activeIcon = useColorModeValue("brand.500", "white")
-  let textColor = useColorModeValue("secondaryGray.500", "white")
-  let brandColor = useColorModeValue("brand.500", "brand.400")
+  const activeIcon = useColorModeValue("brand.500", "white")
+  const textColor = useColorModeValue("secondaryGray.500", "white")
+  const brandColor = useColorModeValue("brand.500", "brand.400")
 
   const {routes} = props
 
@@ -24,13 +23,13 @@ export function SidebarLinks(props) {
   }
 
   // this function creates the links from the secondary accordions (for example auth -> sign-in -> default)
-  const createLinks = (routes) => {
-    return routes.map((route, index) => {
+  const createLinks = (routesPassed) => {
+    return routesPassed.map((route) => {
       if (route.category) {
         return (
           <>
             <Text
-              fontSize={"md"}
+              fontSize="md"
               color={activeColor}
               fontWeight="bold"
               mx="auto"
@@ -40,19 +39,16 @@ export function SidebarLinks(props) {
               }}
               pt="18px"
               pb="12px"
-              key={index}>
+              key={route.name}>
               {route.name}
             </Text>
             {createLinks(route.items)}
           </>
         )
-      } else if (
-        route.layout === "/admin" ||
-        route.layout === "/auth" ||
-        route.layout === "/rtl"
-      ) {
+      }
+      if (route.layout === "/admin") {
         return (
-          <NavLink key={index} to={route.layout + route.path}>
+          <NavLink key={route.name} to={route.layout + route.path}>
             {route.icon ? (
               <Box>
                 <HStack
@@ -125,6 +121,7 @@ export function SidebarLinks(props) {
           </NavLink>
         )
       }
+      return null
     })
   }
   //  BRAND

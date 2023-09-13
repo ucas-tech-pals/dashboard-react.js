@@ -1,17 +1,10 @@
-// DONE REVIEWING: GITHUB COMMIT 🔒
+// DONE REVIEWING: GITHUB COMMIT 🔓
 import {Icon} from "@chakra-ui/react"
-import {
-  MdBarChart,
-  MdHome,
-  MdLock,
-  MdOutlineShoppingCart,
-  MdPerson
-} from "react-icons/md"
+import {MdFileCopy, MdHome, MdLock, MdPerson} from "react-icons/md"
 
 // Admin Imports
 import DataTables from "views/admin/dataTables"
 import MainDashboard from "views/admin/default"
-import NFTMarketplace from "views/admin/marketplace"
 import Profile from "views/admin/profile"
 import RTL from "views/admin/rtl"
 
@@ -28,26 +21,12 @@ const routes = [
     component: MainDashboard
   },
   {
-    name: "NFT Marketplace",
+    name: "Certifications",
     layout: "/admin",
-    path: "/nft-marketplace",
-    icon: (
-      <Icon
-        as={MdOutlineShoppingCart}
-        width="20px"
-        height="20px"
-        color="inherit"
-      />
-    ),
-    component: NFTMarketplace,
+    path: "/certifications",
+    icon: <Icon as={MdFileCopy} width="20px" height="20px" color="inherit" />,
+    component: DataTables,
     secondary: true
-  },
-  {
-    name: "Data Tables",
-    layout: "/admin",
-    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-    path: "/data-tables",
-    component: DataTables
   },
   {
     name: "Profile",

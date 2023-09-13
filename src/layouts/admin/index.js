@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 🔓
 // Chakra imports
 import {Box, Portal, useDisclosure} from "@chakra-ui/react"
 import Footer from "components/footer/FooterAdmin.js"
@@ -166,7 +166,7 @@ export default function Dashboard(props) {
                 {auth.ready ? (
                   <Switch>
                     {getRoutes(routes)}
-                    <Redirect from="/" to="/admin/default" />
+                    <Redirect from="/" to="/admin/certifications" />
                   </Switch>
                 ) : null}
               </Box>

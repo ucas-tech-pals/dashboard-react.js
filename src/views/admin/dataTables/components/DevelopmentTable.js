@@ -1,3 +1,4 @@
+// DONE REVIEWING: GITHUB COMMIT 🔓
 /* eslint-disable */
 import {
   Flex,
@@ -15,10 +16,10 @@ import {
 import Card from "components/card/Card"
 import {AndroidLogo, AppleLogo, WindowsLogo} from "components/icons/Icons"
 import Menu from "components/menu/MainMenu"
-import React, {useMemo} from "react"
+import {useMemo} from "react"
 import {useGlobalFilter, usePagination, useSortBy, useTable} from "react-table"
 
-export default function DevelopmentTable(props) {
+export default function CertificationsTable(props) {
   const {columnsData, tableData} = props
 
   const columns = useMemo(() => columnsData, [columnsData])
@@ -59,7 +60,7 @@ export default function DevelopmentTable(props) {
           fontSize="22px"
           fontWeight="700"
           lineHeight="100%">
-          Development Table
+          Certifications Table
         </Text>
         <Menu />
       </Flex>

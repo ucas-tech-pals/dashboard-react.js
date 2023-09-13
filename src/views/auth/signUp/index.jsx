@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 🔒
+// DONE REVIEWING: GITHUB COMMIT 🔓
 /* eslint-disable */
 /*!
   _   _  ___  ____  ___ ________  _   _   _   _ ___   
@@ -117,8 +117,8 @@ function SignUp() {
               variant="auth"
               fontSize="sm"
               ms={{base: "0px", md: "0px"}}
-              type="name"
-              placeholder="John Smith"
+              type="text"
+              placeholder="IT Degree"
               mb="24px"
               fontWeight="500"
               size="lg"
@@ -138,7 +138,7 @@ function SignUp() {
               fontSize="sm"
               ms={{base: "0px", md: "0px"}}
               type="email"
-              placeholder="mail@simmmple.com"
+              placeholder="info@certification.com"
               mb="24px"
               fontWeight="500"
               size="lg"

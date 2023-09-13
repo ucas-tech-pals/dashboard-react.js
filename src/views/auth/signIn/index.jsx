@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 🔒
+// DONE REVIEWING: GITHUB COMMIT 🔓
 /*!
   _   _  ___  ____  ___ ________  _   _   _   _ ___   
  | | | |/ _ \|  _ \|_ _|__  / _ \| \ | | | | | |_ _| 
@@ -46,7 +46,6 @@ import DefaultAuth from "layouts/auth/Default"
 // Assets
 // eslint-disable-next-line
 import illustration from "assets/img/auth/auth.png"
-import client from "plugins/client"
 import {MdOutlineRemoveRedEye} from "react-icons/md"
 import {RiEyeCloseLine} from "react-icons/ri"
 import Auth from "stores/auth"
@@ -119,7 +118,7 @@ const SignIn = function SignIn() {
               fontSize="sm"
               ms={{base: "0px", md: "0px"}}
               type="email"
-              placeholder="mail@simmmple.com"
+              placeholder="info@certification.com"
               mb="24px"
               fontWeight="500"
               size="lg"
@@ -179,15 +178,12 @@ const SignIn = function SignIn() {
               onClick={() => {
                 if (!email || !password) return
                 setIsLoading(true)
-                client(`${accountType}/login`, {
-                  method: "POST",
-                  body: JSON.stringify({email, password})
-                })
-                  .then((response) => signIn(response))
-                  .catch(() => {
-                    // Do something here about error
+                setTimeout(() => {
+                  signIn({
+                    access_token: "FAKED_TOKEN",
+                    user: {id: 0}
                   })
-                  .finally(() => setIsLoading(false))
+                }, 2000)
               }}>
               Sign In
             </Button>

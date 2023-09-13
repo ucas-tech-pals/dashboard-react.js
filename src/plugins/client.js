@@ -1,11 +1,14 @@
-// DONE REVIEWING: GITHUB COMMIT 🔒
+// DONE REVIEWING: GITHUB COMMIT 🔓
 /* eslint no-console: "off" */
 export const localStorageTokenKey = "TOKEN"
 export const localStorageUserKey = "USER"
 
 export const client = async function client(url, options = {}) {
   const token = localStorage.getItem(localStorageTokenKey)
-  const headers = {"content-type": "application/json"}
+  const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  }
 
   if (token) headers.Authorization = `Bearer ${token}`
 
@@ -15,7 +18,9 @@ export const client = async function client(url, options = {}) {
   }
 
   if (options.method) config.method = options.method
-  if (options.headers) config.headers = {...config.headers, ...options.headers}
+  if (options.headers)
+    if (options.formData) config.headers = options.headers
+    else config.headers = {...config.headers, ...options.headers}
   if (options.body) config.body = options.body
 
   let response = null

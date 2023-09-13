@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 🔓
 import {useContext, useMemo, useState} from "react"
 import {Redirect, Route, Switch} from "react-router-dom"
 import routes from "routes.js"
@@ -30,7 +30,9 @@ export default function Auth() {
               key={prop.layout + prop.path}
             />
           )
-        return <Redirect from={prop.layout + prop.path} to="/admin/default" />
+        return (
+          <Redirect from={prop.layout + prop.path} to="/admin/certifications" />
+        )
       }
       if (prop.collapse) {
         return getRoutes(prop.items)
